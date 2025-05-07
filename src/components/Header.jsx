@@ -1,13 +1,15 @@
 import appLogo from '../assets/logo.jpg';
 export default function Header() {
     return (
-        <div id='main-header'>
+        <header id='main-header'>
             <div id="title">
                 <img src={appLogo} alt="a burger logo" />
                 <h1>REACTFOOD</h1>
             </div>
-            <button className='button'>Cart</button>
+            <nav>
+            <button className='button'>Cart(0)</button>
+            </nav>
 
-        </div>
+        </header>
     )
 }
