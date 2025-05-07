@@ -4,10 +4,10 @@ export default function Header() {
         <header id='main-header'>
             <div id="title">
                 <img src={appLogo} alt="a burger logo" />
-                <h1>REACTFOOD</h1>
+                <h1>PEKER'S</h1>
             </div>
             <nav>
-            <button className='button'>Cart(0)</button>
+            <button>Cart(0)</button>
             </nav>
 
         </header>
