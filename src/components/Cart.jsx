@@ -3,6 +3,7 @@ import CartContext from "../store/CardContext";
 import Modal from "./Modal";
 import { currencyFormatter } from "../util/formatting";
 import UserProgressContext from "./UserProgressContext";
+import CartItem from "./CartItem";
 
 export default function Cart() {
 
@@ -23,7 +24,7 @@ export default function Cart() {
           <h2>Your Cart</h2>
           <ul>
             {cartCtx.items.map((item)=> 
-               <li key={item.id}>{item.name} - {item.quantity}</li>
+               <CartItem  key={item.id}  name={item.name} quantity={item.quantity} price={item.price} onIncrease={()=>cartCtx.addItem(item)} onDecrease={()=>cartCtx.removeItem(item)}/>
             )}
           </ul>
           <p className='cart-total'> {currencyFormatter.format(cartTotal)}</p>
