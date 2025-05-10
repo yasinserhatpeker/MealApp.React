@@ -11,7 +11,7 @@ export default function Checkout() {
   const cartTotal=cartCtx.items.reduce((totalPrice,item)=>
     totalPrice + item.price * item.quantity,0,)
     
-  function handleClose() {
+  function handleCloseCheckout() {
     userProgressCtx.hideCheckout();
   }
     return ( 
@@ -28,7 +28,7 @@ export default function Checkout() {
               <Input label="City"  type="text" id="city"/>
              </div>
               <p className="modal-actions">
-                <Button type="button" textOnly onClick={handleClose}>Close</Button>
+                <Button type="button" textOnly onClick={handleCloseCheckout}>Close</Button>
                 <Button>Submit Order</Button>
               </p>
 
