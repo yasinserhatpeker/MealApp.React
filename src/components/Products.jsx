@@ -1,22 +1,14 @@
-import { useEffect, useState } from "react";
 import MealItem from "./MealItem";
+import useHTTP from "../hooks/useHTTP";
 
 export default function Products() {
-const [loadedMeals,setLoadedMeals]=useState([]);
 
-useEffect(()=> {
-    async function fetchingMeals() {
-       const response =  await fetch('http://localhost:3000/meals');
-    
-       if(!response.ok) {
-          // will be added later
-       }
-       const meals= await response.json();
-       setLoadedMeals(meals);
-    }
-    fetchingMeals();
-    
-},[])
+
+  const {data:loadedMeals, isLoading, error} = useHTTP('http://localhost:3000/meals',{},[]);
+
+  if(isLoading) {
+   return <p>the data is fetching...</p>
+  }
 
   return (
         <ul id="meals">
