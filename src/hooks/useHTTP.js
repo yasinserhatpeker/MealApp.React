@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 async function sendHttpRequest({url,config}) {
    const response = await fetch(url,config);
    const resData= await response.json();
@@ -10,8 +12,28 @@ async function sendHttpRequest({url,config}) {
 
 
 export default function useHTTP() {
-    function sendRequest() {
-        sendHttpRequest();
+
+    const [data,setData]=useState();
+    const [isLoading,setIsLoading]=useState(false);
+    const [error,setError]=useState();
+
+    async function sendRequest() {
+        setIsLoading(true);
+        try {
+            const resData=sendHttpRequest();
+            setData(resData);
+
+        }
+        catch(error) {
+             setError(error.message || 'Something went wrong!')
+        }
+        setIsLoading(false)
+    }
+
+    return {
+        data,
+        isLoading,
+        error
     }
 
 
