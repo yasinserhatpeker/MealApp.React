@@ -27,10 +27,17 @@ export function UserProgressContextProvider({children}) {
      function hideCheckout() {
         setUserProgress('');
      }
+     const userProgressCtx= {
+        progress:userProgress,
+        showCart,
+        hideCart,
+        showCheckout,
+        hideCheckout
+     }
+     return (
+         <UserProgressContextProvider value={userProgressCtx}>{children}</UserProgressContextProvider>
+     )
 }
 
-return (
-    <UserProgressContextProvider>{children}</UserProgressContextProvider>
-)
 
 export default UserProgressContext;
